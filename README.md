@@ -27,6 +27,10 @@ Abrir [http://localhost:4173/](http://localhost:4173/)
 1. **Sitio marketing Mayti** → importar `tokens/mayti-tokens.css` y assets de `assets/mayti` / `assets/products`.
 2. **App tipo SAGC / VIGÍA** → seguir `stack/libraries.json` y `usage/stack-rules.md`; código canónico en `MAYTI-SAGC-V2.0/premium-environmental-management-dashboard`.
 
+## Repositorio
+
+https://github.com/404BadRequest/MAYTI-DESIGN-SYSTEM
+
 ## Vercel
 
 Sitio estático (sin build). Despliegue:
@@ -34,8 +38,6 @@ Sitio estático (sin build). Despliegue:
 ```bash
 npx vercel --prod
 ```
-
-Proyecto nuevo (no sobrescribe mayti-web). La URL pública se anota aquí tras el deploy:
 
 - **URL producción:** https://mayti-design-system.vercel.app
 - **Inspect:** https://vercel.com/404badrequests-projects/mayti-design-system
