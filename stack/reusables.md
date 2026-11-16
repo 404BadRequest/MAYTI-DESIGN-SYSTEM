@@ -4,47 +4,61 @@ Código canónico en:
 
 `MAYTI-SAGC-V2.0/premium-environmental-management-dashboard/`
 
+Checklist completo de patrones: **`stack/patterns.md`**.
+
 ## UI kit — `src/components/ui.tsx`
 
 | Export / patrón | Uso |
 |-----------------|-----|
 | `Badge` | Estados y chips de tono |
-| Toast (`ToastProvider` / push) | Feedback de mutaciones |
-| `SectionCard` | Contenedor de sección |
+| Toast (`ToastProvider` / `useToast` / `useMutation`) | Feedback de mutaciones |
+| `SectionCard` | Contenedor de sección / card info |
 | `PageHeader` | Cabecera de vista/ficha |
 | `StatStrip` | Fila de KPIs |
-| `SearchInput` / `SelectField` | Filtros |
+| `SearchInput` / `SelectField` / `FilterMenu` / `FilterChips` | Filtros |
+| `ListPager` | Paginación UI (con `paginate`) |
 | `ProgressBar` | Avance |
 | `EmptyState` | Vacío con CTA |
 | `Reveal` / `EASE` / `spring` / `cn` | Motion + classnames |
 
+## Paginación — `src/lib/pagination.ts`
+
+`PAGE_SIZE = 15` · `paginate(items, page)` → filas + meta para `ListPager`.
+
 ## Gráficos — `src/components/charts.tsx`
 
-Implementar visualizaciones **solo** con este módulo (SVG + `motion`). No añadir Recharts/Chart.js.
+Solo este módulo (SVG + `motion`). Tipos: gauge, área, donut, barras, sparkline, matriz, scatter, stacked, timeline, forecast.
 
-Tipos: gauge, área, donut, barras, sparkline, matriz, scatter, stacked, timeline, forecast.
+## Listas — `src/components/record-list.tsx`
 
-Consumidores típicos: `views/overview.tsx`, `compliance.tsx`, `registry.tsx`, `execution.tsx`, `decision.tsx`, `coverage-panel.tsx`, fichas.
+Filas con título, badges, métricas, empty props. No TanStack / AG Grid.
 
-## Listas / “tablas” — `src/components/record-list.tsx`
+## Mapas SIG — `src/components/coverage-panel.tsx`
 
-Patrón de filas paginadas con título, badges, métricas y acciones. Sustituye tablas de terceros.
+MapLibre GL + `lib/cobertura.ts`. Workers: `scripts/copy-maplibre-worker.mjs`.
 
-## Mapas — `src/components/coverage-panel.tsx`
+## Dialogs / drawers
 
-MapLibre GL. Copiar workers con `scripts/copy-maplibre-worker.mjs` (`predev` / `prebuild`).
+- `record-drawer.tsx` — modal centrado CRUD/detalle
+- `commitment-subresource-drawer.tsx` — verificador / evidencia / plan
+- Capas mapa: aside en `coverage-panel.tsx`
 
-## Drawers
+## Navegación ficha
 
-- `src/components/record-drawer.tsx` — CRUD genérico de entidades
-- `src/components/fichas/commitment-subresource-drawer.tsx` — verificador / evidencia / plan
+- `fichas/breadcrumbs.tsx` + “Volver al listado” (`btn btn-ghost`)
+- Tabs de ficha con indicador motion
+
+## Loading
+
+- `.shimmer` en `globals.css` para skeletons de lista
+- `Loader2` + spin para mutaciones / mapa
 
 ## Shell
 
-- `src/components/app-shell.tsx` — navegación, tema light/dark, aurora, toasts
+- `app-shell.tsx` — nav, tema, aurora, toasts
 
 ## Tokens de app — `src/app/globals.css`
 
-Variables `--bg`, `--surface`, `--accent*`, glass, aurora, `.btn`, `.field`, `.chip`, `.display`, `.mono`.
+`--bg`, `--surface`, `--accent*`, glass, aurora, `.btn`, `.field`, `.chip`, `.display`, `.mono`, `.shimmer`.
 
-Tipografías actuales SAGC: Inter / Sora / JetBrains Mono. Identidad Mayti corporativa: Plus Jakarta Sans (ver `IDENTITY.md`).
+Tipografías SAGC hoy: Inter / Sora / JetBrains Mono. Corporativa Mayti: Plus Jakarta Sans (`IDENTITY.md`).

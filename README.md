@@ -17,7 +17,8 @@ Abrir [http://localhost:4173/](http://localhost:4173/)
 |------|--------|
 | `index.html` | Brand book visual |
 | `tokens/` | Colores, tipografía, CSS y mapa Tailwind Mayti |
-| `stack/` | Librerías y reutilizables SAGC Premium |
+| `stack/` | Librerías, reutilizables y **patrones UI** (`patterns.md`) |
+| `brand-book.js` | Demos interactivas (pager, filtros, dialog, empty, skeleton, toasts) |
 | `assets/` | Logos MAYTI y productos (PNG + variantes `*-light.png` para UI clara) |
 | `usage/` | Do/don’t, acentos, reglas de stack |
 | `IDENTITY.md` | Guía corta de marca |
@@ -25,7 +26,7 @@ Abrir [http://localhost:4173/](http://localhost:4173/)
 ## Cómo reutilizar
 
 1. **Sitio marketing Mayti** → importar `tokens/mayti-tokens.css` y assets de `assets/mayti` / `assets/products`.
-2. **App tipo SAGC / VIGÍA** → seguir `stack/libraries.json` y `usage/stack-rules.md`; código canónico en `MAYTI-SAGC-V2.0/premium-environmental-management-dashboard`.
+2. **App tipo SAGC / VIGÍA** → seguir `stack/patterns.md`, `stack/libraries.json` y `usage/stack-rules.md`; código canónico en `MAYTI-SAGC-V2.0/premium-environmental-management-dashboard`.
 
 ## Repositorio
 

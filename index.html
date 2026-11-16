@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./brand-book.css" />
+    <link href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.6.2/dist/maplibre-gl.css" rel="stylesheet" />
   </head>
   <body>
     <nav class="bb-nav">
@@ -23,29 +24,38 @@
       <div class="bb-nav-links">
         <a href="#logos">Logos</a>
         <a href="#color">Color</a>
-        <a href="#tipo">Tipografía</a>
-        <a href="#componentes">Componentes</a>
+        <a href="#tipo">Tipo</a>
         <a href="#productos">Productos</a>
-        <a href="#stack">Stack SAGC</a>
-        <a href="#charts">Gráficos</a>
+        <a href="#stack">Stack</a>
+        <a href="#charts">Charts</a>
         <a href="#listas">Listas</a>
-        <a href="#mapas">Mapas</a>
-        <a href="#rules">Do/Don’t</a>
+        <a href="#paginacion">Pager</a>
+        <a href="#filtros">Filtros</a>
+        <a href="#cards">Cards</a>
+        <a href="#dialog">Dialog</a>
+        <a href="#empty">Empty</a>
+        <a href="#volver">Volver</a>
+        <a href="#mapas">Mapas SIG</a>
+        <a href="#skeleton">Skeleton</a>
+        <a href="#motion">Motion</a>
+        <a href="#toasts">Toasts</a>
+        <a href="#rules">Reglas</a>
       </div>
     </nav>
 
     <header class="bb-hero">
       <div class="bb-hero-inner">
-        <span class="mayti-badge">Design system · v1.0</span>
+        <span class="mayti-badge">Design system · v1.1</span>
         <h1>Identidad visual MAYTI</h1>
         <p>
-          Libro de marca y catálogo de stack para sitios Mayti y productos derivados (VIGÍA / SAGC Premium).
-          Tokens listos para código + demos visuales para el equipo.
+          Libro de marca + patrones de producto para armar sitios sin improvisar:
+          paginación, mapas SIG, cards, dialogs, empty states, filtros, skeletons y motion.
         </p>
         <div class="bb-meta">
           <span class="bb-chip">Plus Jakarta Sans</span>
           <span class="bb-chip">Gradiente marca teal→coral→oro</span>
-          <span class="bb-chip">SAGC: charts · RecordList · MapLibre</span>
+          <span class="bb-chip">SAGC Premium UI kit</span>
+          <span class="bb-chip">MapLibre · RecordList · ListPager</span>
         </div>
       </div>
     </header>
@@ -70,6 +80,12 @@
         </div>
         <div class="logo-tile light">
           <img class="logo-product" src="./assets/products/vigia-sectorial-light.png" alt="VIGÍA Sectorial" />
+        </div>
+        <div class="logo-tile light">
+          <img class="logo-product" src="./assets/products/conecta-light.png" alt="Conecta" />
+        </div>
+        <div class="logo-tile light">
+          <img class="logo-product" src="./assets/products/circular-light.png" alt="Circular" />
         </div>
       </div>
     </section>
@@ -299,185 +315,370 @@
     <!-- Charts -->
     <section class="bb-section" id="charts">
       <span class="mayti-badge bb-kicker">07 · Gráficos</span>
-      <h2>Demos estilo <code>charts.tsx</code></h2>
-      <p class="lead">Implementar vía SVG + motion en SAGC Premium. No instalar libs de charts de terceros.</p>
-      <div class="bb-grid bb-grid-3">
+      <h2>Demos animadas estilo <code>charts.tsx</code></h2>
+      <p class="lead">
+        Misma curva <code>EASE [0.16, 1, 0.3, 1]</code>: donut/gauge con stroke, barras con altura, área con
+        <code>pathLength</code>. Replay para volver a ver el motion.
+      </p>
+      <div class="pattern-toolbar">
+        <button type="button" class="bb-btn" id="demo-charts-replay">↻ Replay animaciones</button>
+      </div>
+      <div class="bb-grid bb-grid-3" id="demo-charts">
         <div class="chart-card">
           <h3>Donut</h3>
-          <svg viewBox="0 0 120 120" width="100%" height="140" aria-hidden="true">
+          <svg class="chart-svg" viewBox="0 0 120 120" width="100%" height="150" aria-hidden="true">
             <circle cx="60" cy="60" r="42" fill="none" stroke="#e2e8f0" stroke-width="14" />
             <circle
+              class="chart-anim-donut"
               cx="60"
               cy="60"
               r="42"
               fill="none"
               stroke="#0ea5e9"
               stroke-width="14"
-              stroke-dasharray="198 264"
               stroke-linecap="round"
               transform="rotate(-90 60 60)"
+              stroke-dasharray="0 264"
             />
             <circle
+              class="chart-anim-donut-b"
               cx="60"
               cy="60"
               r="42"
               fill="none"
               stroke="#2dd4bf"
               stroke-width="14"
-              stroke-dasharray="66 264"
-              stroke-dashoffset="-198"
               stroke-linecap="round"
               transform="rotate(-90 60 60)"
+              stroke-dasharray="0 264"
             />
-            <text x="60" y="64" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">75%</text>
+            <text class="chart-anim-label" x="60" y="64" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">
+              75%
+            </text>
           </svg>
         </div>
         <div class="chart-card">
           <h3>Barras</h3>
-          <svg viewBox="0 0 200 120" width="100%" height="140" aria-hidden="true">
-            <rect x="20" y="40" width="28" height="70" rx="6" fill="#0ea5e9" />
-            <rect x="60" y="25" width="28" height="85" rx="6" fill="#38bdf8" />
-            <rect x="100" y="55" width="28" height="55" rx="6" fill="#2dd4bf" />
-            <rect x="140" y="35" width="28" height="75" rx="6" fill="#fb923c" />
+          <svg class="chart-svg" viewBox="0 0 200 120" width="100%" height="150" aria-hidden="true">
+            <rect class="chart-anim-bar" data-h="70" x="20" y="110" width="28" height="0" rx="6" fill="#0ea5e9" />
+            <rect class="chart-anim-bar" data-h="85" x="60" y="110" width="28" height="0" rx="6" fill="#38bdf8" />
+            <rect class="chart-anim-bar" data-h="55" x="100" y="110" width="28" height="0" rx="6" fill="#2dd4bf" />
+            <rect class="chart-anim-bar" data-h="75" x="140" y="110" width="28" height="0" rx="6" fill="#fb923c" />
           </svg>
         </div>
         <div class="chart-card">
           <h3>Área / sparkline</h3>
-          <svg viewBox="0 0 200 120" width="100%" height="140" aria-hidden="true">
+          <svg class="chart-svg" viewBox="0 0 200 120" width="100%" height="150" aria-hidden="true">
             <defs>
               <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.35" />
                 <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0" />
               </linearGradient>
             </defs>
-            <path d="M10,90 L40,70 L70,78 L100,40 L130,55 L160,30 L190,45 L190,110 L10,110 Z" fill="url(#areaFill)" />
             <path
+              class="chart-anim-area-fill"
+              d="M10,90 L40,70 L70,78 L100,40 L130,55 L160,30 L190,45 L190,110 L10,110 Z"
+              fill="url(#areaFill)"
+              opacity="0"
+            />
+            <path
+              class="chart-anim-area-line"
               d="M10,90 L40,70 L70,78 L100,40 L130,55 L160,30 L190,45"
               fill="none"
               stroke="#0284c7"
               stroke-width="3"
               stroke-linecap="round"
               stroke-linejoin="round"
+              pathLength="1"
+              stroke-dasharray="1"
+              stroke-dashoffset="1"
             />
+            <circle class="chart-anim-dot" cx="190" cy="45" r="0" fill="#0284c7" />
           </svg>
         </div>
         <div class="chart-card">
           <h3>Gauge</h3>
-          <svg viewBox="0 0 160 100" width="100%" height="140" aria-hidden="true">
+          <svg class="chart-svg" viewBox="0 0 160 100" width="100%" height="150" aria-hidden="true">
             <path d="M20,90 A60,60 0 0 1 140,90" fill="none" stroke="#e2e8f0" stroke-width="12" stroke-linecap="round" />
-            <path d="M20,90 A60,60 0 0 1 110,38" fill="none" stroke="#0ea5e9" stroke-width="12" stroke-linecap="round" />
-            <text x="80" y="82" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">68</text>
+            <path
+              class="chart-anim-gauge"
+              d="M20,90 A60,60 0 0 1 140,90"
+              fill="none"
+              stroke="#0ea5e9"
+              stroke-width="12"
+              stroke-linecap="round"
+              pathLength="100"
+              stroke-dasharray="0 100"
+            />
+            <text class="chart-anim-label" x="80" y="82" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">
+              68
+            </text>
           </svg>
         </div>
       </div>
-      <p class="note">Tipos canónicos: gauge, area, donut, bars, sparkline, matrix, scatter, stacked, timeline, forecast → <code>src/components/charts.tsx</code></p>
+      <p class="note">
+        Canónico: <code>src/components/charts.tsx</code> (motion) · tipos: gauge, area, donut, bars, sparkline, matrix,
+        scatter, stacked, timeline, forecast
+      </p>
     </section>
 
     <!-- Lists -->
     <section class="bb-section" id="listas">
       <span class="mayti-badge bb-kicker">08 · Listas / tablas</span>
       <h2>Patrón RecordList</h2>
-      <p class="lead">Filas paginadas con título, badges y métricas. No usar TanStack Table / AG Grid.</p>
+      <p class="lead">Filas con título, badges y métricas. Sustituye tablas de terceros (no TanStack / AG Grid).</p>
       <div class="list-card">
         <div class="record-row">
           <div>
             <strong>CMP-3286 · Control de emisiones</strong>
             <small>Almagro · Verificador con evidencia</small>
           </div>
-          <span class="badge">Vigente</span>
+          <span class="badge badge-ok">Vigente</span>
         </div>
         <div class="record-row">
           <div>
             <strong>Plan de acción · Muestreo Q4</strong>
             <small>Responsable ambiental · Programado</small>
           </div>
-          <span class="badge" style="background: #ecfdf5; color: #047857">Programado</span>
+          <span class="badge badge-info">Programado</span>
         </div>
         <div class="record-row">
           <div>
             <strong>RCA-22 · Compromisos en riesgo</strong>
             <small>3 observados · plazo 12d</small>
           </div>
-          <span class="badge" style="background: #fff7ed; color: #c2410c">En riesgo</span>
+          <span class="badge badge-warn">En riesgo</span>
         </div>
       </div>
-      <p class="note">Canónico: <code>src/components/record-list.tsx</code></p>
+      <p class="note">Canónico: <code>src/components/record-list.tsx</code> · Guía: <code>stack/patterns.md</code></p>
     </section>
 
-    <!-- Maps -->
-    <section class="bb-section" id="mapas">
-      <span class="mayti-badge bb-kicker">09 · Mapas</span>
-      <h2>MapLibre GL</h2>
-      <p class="lead">Cobertura geográfica de permisos / compromisos / OIA.</p>
-      <div class="map-card">
-        <div
-          style="
-            height: 220px;
-            border-radius: 1rem;
-            background:
-              radial-gradient(circle at 30% 40%, rgba(14, 165, 233, 0.35), transparent 45%),
-              radial-gradient(circle at 70% 60%, rgba(45, 212, 191, 0.3), transparent 40%),
-              linear-gradient(160deg, #0b1220, #1e293b);
-            border: 1px solid rgba(148, 163, 184, 0.25);
-            display: grid;
-            place-items: center;
-            color: #e2e8f0;
-            text-align: center;
-            padding: 1rem;
-          "
-        >
-          <div>
-            <div class="bb-chip" style="margin: 0 auto 0.75rem">maplibre-gl ^6.15</div>
-            <strong style="display: block; font-size: 1.1rem">Coverage map placeholder</strong>
-            <span style="font-size: 0.85rem; color: #94a3b8"
-              >Implementar con <code>coverage-panel.tsx</code> + workers en <code>public/maplibre/</code></span
-            >
+    <!-- Pagination -->
+    <section class="bb-section" id="paginacion">
+      <span class="mayti-badge bb-kicker">09 · Paginación</span>
+      <h2>ListPager + paginate()</h2>
+      <p class="lead">
+        <code>PAGE_SIZE = 15</code> en producto (demo con 5). Resetear a página 1 al cambiar filtros.
+        API: <code>paginate(items, page)</code> → <code>ListPager</code>.
+      </p>
+      <div class="list-card">
+        <div id="demo-pager-list"></div>
+        <div class="pager-bar">
+          <span id="demo-pager-meta">—</span>
+          <div class="pager-actions">
+            <button type="button" class="bb-btn" id="demo-pager-prev">← Anterior</button>
+            <button type="button" class="bb-btn" id="demo-pager-next">Siguiente →</button>
           </div>
         </div>
       </div>
+      <p class="note">Canónico: <code>src/lib/pagination.ts</code> + <code>ListPager</code> en <code>ui.tsx</code></p>
     </section>
 
-    <!-- Motion / drawers -->
-    <section class="bb-section" id="motion">
-      <span class="mayti-badge bb-kicker">10 · Motion &amp; drawers</span>
-      <h2>Patrones de interacción</h2>
-      <div class="bb-grid bb-grid-2">
-        <div class="ui-card">
-          <h3>motion</h3>
-          <p style="margin: 0; color: var(--mayti-text-body); font-size: 0.9rem">
-            <code>AnimatePresence</code>, springs (<code>EASE</code> / <code>spring</code> en <code>ui.tsx</code>), revelados y transiciones de drawer.
-          </p>
+    <!-- Filters -->
+    <section class="bb-section" id="filtros">
+      <span class="mayti-badge bb-kicker">10 · Filtros</span>
+      <h2>Search + chips + menú</h2>
+      <p class="lead">
+        <code>SearchInput</code> + <code>FilterChips</code> / <code>FilterMenu</code>. Mostrar contador mono de resultados.
+      </p>
+      <div class="list-card">
+        <div class="pattern-toolbar">
+          <input id="demo-filter-search" class="filter-search" type="search" placeholder="Buscar permiso, RCA…" />
+          <span class="bb-chip"><span id="demo-filter-count">0</span> resultados</span>
         </div>
-        <div class="ui-card">
-          <h3>Drawers</h3>
-          <p style="margin: 0; color: var(--mayti-text-body); font-size: 0.9rem">
-            <code>record-drawer.tsx</code> · <code>commitment-subresource-drawer.tsx</code> — glass, chrome tipo ventana, confirm delete.
-          </p>
+        <div class="filter-chips" style="margin-bottom: 1rem">
+          <button type="button" class="filter-chip is-active" data-filter-chip="all">Todos</button>
+          <button type="button" class="filter-chip" data-filter-chip="vigente">Vigente</button>
+          <button type="button" class="filter-chip" data-filter-chip="riesgo">En riesgo</button>
+          <button type="button" class="filter-chip" data-filter-chip="programado">Programado</button>
+        </div>
+        <div id="demo-filter-list"></div>
+      </div>
+      <p class="note">Canónico: <code>SearchInput</code>, <code>FilterMenu</code>, <code>FilterChips</code> en <code>ui.tsx</code></p>
+    </section>
+
+    <!-- Cards -->
+    <section class="bb-section" id="cards">
+      <span class="mayti-badge bb-kicker">11 · Cards de información</span>
+      <h2>SectionCard + StatStrip</h2>
+      <p class="lead">Contenedor de sección con eyebrow/título/acción; KPIs en franja. No cards decorativas sin acción o dato.</p>
+      <div class="stat-strip" style="margin-bottom: 1rem">
+        <div class="stat-item"><span>Cumplimiento</span><strong>87%</strong><small>+4 pts mes</small></div>
+        <div class="stat-item"><span>En riesgo</span><strong>12</strong><small>compromisos</small></div>
+        <div class="stat-item"><span>Evidencias</span><strong>48</strong><small>últimos 30d</small></div>
+        <div class="stat-item"><span>Cobertura</span><strong>63%</strong><small>territorio</small></div>
+      </div>
+      <div class="pattern-grid">
+        <article class="info-card">
+          <p class="eyebrow">Territorio</p>
+          <h3>Cobertura de permisos</h3>
+          <p>Resumen de capas SIG activas y puntos georreferenciados del proyecto seleccionado.</p>
+        </article>
+        <article class="info-card">
+          <p class="eyebrow">Operación</p>
+          <h3>Cola de verificadores</h3>
+          <p>Pendientes de evidencia y planes asociados al compromiso abierto.</p>
+        </article>
+      </div>
+      <p class="note">Canónico: <code>SectionCard</code>, <code>StatStrip</code>, <code>PageHeader</code> en <code>ui.tsx</code></p>
+    </section>
+
+    <!-- Dialog -->
+    <section class="bb-section" id="dialog">
+      <span class="mayti-badge bb-kicker">12 · Dialog / drawer</span>
+      <h2>Modal centrado (RecordDrawer)</h2>
+      <p class="lead">
+        CRUD y detalle en modal con backdrop blur y chrome tipo ventana. Escape cierra. Confirmaciones destructivas
+        dentro del mismo shell (no <code>window.confirm</code>).
+      </p>
+      <div class="ui-card">
+        <button type="button" class="sagc-btn-primary" id="demo-dialog-open">Abrir dialog demo</button>
+        <p style="margin: 0.85rem 0 0; font-size: 0.85rem; color: var(--mayti-text-muted)">
+          Capas del mapa usan panel lateral (<code>motion.aside</code>); el resto de entidades usa este modal.
+        </p>
+      </div>
+      <p class="note">Canónico: <code>record-drawer.tsx</code> · subrecursos: <code>commitment-subresource-drawer.tsx</code></p>
+    </section>
+
+    <!-- Empty -->
+    <section class="bb-section" id="empty">
+      <span class="mayti-badge bb-kicker">13 · Empty / CTA vacío</span>
+      <h2>EmptyState (ficha Premium)</h2>
+      <p class="lead">
+        Layout canónico de SAGC: tabs de ficha + acción primaria arriba + panel vacío centrado (icono Mayti, título,
+        descripción, CTA secundario).
+      </p>
+      <div class="pattern-toolbar">
+        <button type="button" class="bb-btn" id="demo-empty-toggle">Ver con datos</button>
+      </div>
+      <div class="empty-ficha" id="demo-empty-host"></div>
+      <p class="note">Canónico: <code>EmptyState</code> + <code>RecordList</code> empty* · ej. <code>commitment-ficha.tsx</code> VerifiersTab</p>
+    </section>
+
+    <!-- Back -->
+    <section class="bb-section" id="volver">
+      <span class="mayti-badge bb-kicker">14 · Volver / breadcrumbs</span>
+      <h2>Navegación de ficha</h2>
+      <p class="lead">Migas + botón ghost “Volver al listado”. No depender solo del historial del browser.</p>
+      <div class="list-card">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="#listas">Portafolio</a>
+          <span class="sep">/</span>
+          <a href="#listas">Proyecto Almagro</a>
+          <span class="sep">/</span>
+          <span class="current">CMP-3286</span>
+        </nav>
+        <div class="pattern-toolbar">
+          <button type="button" class="bb-btn bb-btn-ghost">← Volver al listado</button>
+          <button type="button" class="sagc-btn-primary" style="padding: 0.45rem 0.85rem; font-size: 0.75rem">Editar</button>
+        </div>
+        <div class="tabs-demo" role="tablist">
+          <button type="button" class="is-active">Resumen</button>
+          <button type="button">Verificadores</button>
+          <button type="button">Evidencias</button>
+          <button type="button">Planes</button>
+        </div>
+        <p style="margin: 0; font-size: 0.85rem; color: var(--mayti-text-body)">
+          Tabs de ficha con indicador motion; contenido bajo el tab activo.
+        </p>
+      </div>
+      <p class="note">Canónico: <code>fichas/breadcrumbs.tsx</code> + links <code>btn btn-ghost</code> en fichas</p>
+    </section>
+
+    <!-- Maps SIG -->
+    <section class="bb-section" id="mapas">
+      <span class="mayti-badge bb-kicker">15 · Mapas SIG</span>
+      <h2>MapLibre · CoveragePanel</h2>
+      <p class="lead">
+        Mapa real con datos demo (puntos GeoJSON permisos / RCA / OIA alrededor de Santiago). Click en punto → popup.
+        En producto: workers vía <code>scripts/copy-maplibre-worker.mjs</code>.
+      </p>
+      <div class="map-card map-card-live">
+        <div class="sig-map-toolbar">
+          <button type="button" class="sig-layer-btn is-active" data-layer="permisos">Permisos</button>
+          <button type="button" class="sig-layer-btn is-active" data-layer="rca">RCA</button>
+          <button type="button" class="sig-layer-btn is-active" data-layer="oia">OIA</button>
+          <span class="bb-chip">demo GeoJSON</span>
+        </div>
+        <div id="demo-map" class="sig-map-live" aria-label="Mapa demo cobertura"></div>
+      </div>
+      <p class="note">Canónico: <code>coverage-panel.tsx</code> + <code>lib/cobertura.ts</code> · no abrir el mapa en un modal aparte</p>
+    </section>
+
+    <!-- Skeleton -->
+    <section class="bb-section" id="skeleton">
+      <span class="mayti-badge bb-kicker">16 · Skeleton / loading</span>
+      <h2>Shimmer + spinner</h2>
+      <p class="lead">
+        Primera carga de listas: filas <code>.shimmer</code>. Mutaciones: <code>Loader2</code> + <code>animate-spin</code>.
+        No dejar Suspense vacío.
+      </p>
+      <div class="pattern-toolbar">
+        <button type="button" class="bb-btn" id="demo-skeleton-toggle">Simular listo</button>
+      </div>
+      <div class="list-card" id="demo-skeleton-host"></div>
+      <p class="note">Token CSS: <code>.shimmer</code> en <code>globals.css</code> del dashboard Premium</p>
+    </section>
+
+    <!-- Motion -->
+    <section class="bb-section" id="motion">
+      <span class="mayti-badge bb-kicker">17 · Animaciones</span>
+      <h2>motion · EASE / spring / Reveal</h2>
+      <p class="lead">
+        Entradas con blur+opacity; overlays con spring. Respetar <code>prefers-reduced-motion</code>.
+      </p>
+      <div class="bb-grid bb-grid-3">
+        <div class="ui-card reveal">
+          <h3>Reveal</h3>
+          <p style="margin: 0; font-size: 0.85rem; color: var(--mayti-text-body)">Scroll-in una sola vez (demo al entrar en viewport).</p>
+        </div>
+        <div class="ui-card reveal" style="transition-delay: 0.08s">
+          <h3>EASE</h3>
+          <p style="margin: 0; font-size: 0.85rem; color: var(--mayti-text-body)"><code>[0.16, 1, 0.3, 1]</code> — entradas de vista.</p>
+        </div>
+        <div class="ui-card reveal" style="transition-delay: 0.16s">
+          <h3>spring</h3>
+          <p style="margin: 0; font-size: 0.85rem; color: var(--mayti-text-body)">stiffness 260 · damping 28 — dialogs / drawers.</p>
         </div>
       </div>
+      <p class="note">Canónico: <code>Reveal</code>, <code>EASE</code>, <code>spring</code> en <code>ui.tsx</code> · paquete <code>motion</code></p>
+    </section>
+
+    <!-- Toasts -->
+    <section class="bb-section" id="toasts">
+      <span class="mayti-badge bb-kicker">18 · Toasts</span>
+      <h2>Feedback de mutaciones</h2>
+      <p class="lead"><code>useMutation</code> → toast glass (máx. 3, ~4s). No usar <code>alert()</code> para CRUD.</p>
+      <div class="demo-row">
+        <button type="button" class="bb-btn" id="demo-toast-ok">Toast éxito</button>
+        <button type="button" class="bb-btn" id="demo-toast-err">Toast error</button>
+      </div>
+      <p class="note">Canónico: <code>ToastProvider</code> / <code>useToast</code> / <code>useMutation</code> en <code>ui.tsx</code></p>
     </section>
 
     <!-- Do / Don't -->
     <section class="bb-section" id="rules">
-      <span class="mayti-badge bb-kicker">11 · Reglas</span>
+      <span class="mayti-badge bb-kicker">19 · Reglas</span>
       <h2>Do / Don’t</h2>
       <div class="dont-grid">
         <div class="dont-card do">
           <h3>Do</h3>
           <ul>
-            <li>PNG oficiales sin alterar</li>
-            <li>Gradiente marca en CTAs</li>
-            <li>charts.tsx + RecordList + MapLibre</li>
-            <li>Lucide + motion</li>
+            <li>PNG oficiales sin alterar (productos solo en claro)</li>
+            <li>RecordList + ListPager + EmptyState</li>
+            <li>MapLibre + CoveragePanel para SIG</li>
+            <li>Dialog RecordDrawer + toasts + shimmer</li>
+            <li>Seguir <code>stack/patterns.md</code></li>
           </ul>
         </div>
         <div class="dont-card dont">
           <h3>Don’t</h3>
           <ul>
-            <li>Recolorear / redibujar logos</li>
             <li>Recharts / Chart.js / TanStack / AG Grid</li>
+            <li>Mapas o logos de producto en fondo navy</li>
+            <li>Listas vacías sin CTA / sin skeleton</li>
+            <li><code>window.confirm</code> / <code>alert</code> para UX de producto</li>
             <li>Purple-on-white genérico</li>
-            <li>Gradiente como fondo de página</li>
           </ul>
         </div>
       </div>
@@ -485,9 +686,30 @@
 
     <footer class="bb-footer">
       <p>
-        <strong>MAYTI Design System</strong> · Identidad corporativa + stack SAGC Premium<br />
-        Tokens en <code>/tokens</code> · Stack en <code>/stack</code> · Assets en <code>/assets</code>
+        <strong>MAYTI Design System</strong> · Identidad + patrones SAGC Premium<br />
+        Tokens <code>/tokens</code> · Stack <code>/stack</code> · Patrones <code>/stack/patterns.md</code>
       </p>
     </footer>
+
+    <div id="demo-dialog" class="dialog-backdrop" hidden aria-hidden="true" role="presentation">
+      <div class="dialog-panel" role="dialog" aria-modal="true" aria-labelledby="demo-dialog-title">
+        <div class="dialog-chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="dialog-body">
+          <h3 id="demo-dialog-title">Nuevo permiso</h3>
+          <p>Shell modal canónico: backdrop blur, chrome, Escape para cerrar y acciones al pie.</p>
+          <label style="display: block; font-size: 0.75rem; font-weight: 700; margin-bottom: 0.35rem">Nombre</label>
+          <input class="filter-search" style="width: 100%; margin-bottom: 1rem" placeholder="Ej. Permiso sanitario" />
+          <div class="dialog-actions">
+            <button type="button" class="bb-btn bb-btn-ghost" data-dialog-close>Cancelar</button>
+            <button type="button" class="sagc-btn-primary" data-dialog-close style="padding: 0.45rem 0.9rem; font-size: 0.75rem">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="demo-toast-stack" class="demo-toast-stack" aria-live="polite"></div>
+    <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.6.2/dist/maplibre-gl.js"></script>
+    <script src="./brand-book.js" defer></script>
   </body>
 </html>
