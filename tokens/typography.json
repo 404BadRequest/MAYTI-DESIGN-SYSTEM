@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "brand": "MAYTI",
+    "version": "1.0.0"
+  },
+  "families": {
+    "sans": {
+      "name": "Plus Jakarta Sans",
+      "weights": [300, 400, 500, 600, 700, 800],
+      "googleFonts": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap",
+      "use": "Identidad corporativa Mayti (web, marketing, nuevos sitios)"
+    },
+    "display": {
+      "name": "Space Grotesk",
+      "weights": [500, 600, 700],
+      "googleFonts": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap",
+      "use": "Display opcional / énfasis"
+    }
+  },
+  "note": "SAGC Premium hoy usa Inter / Sora / JetBrains Mono. Nuevos sitios Mayti: Plus Jakarta. Pantallas SAGC: reutilizar kit Premium; migrar a Plus Jakarta al tocar skin.",
+  "scale": {
+    "hero": { "size": "clamp(1.65rem, 4.5vw, 3.4rem)", "weight": 800, "lineHeight": 1.15 },
+    "h2": { "size": "clamp(1.75rem, 3vw, 3rem)", "weight": 800 },
+    "h3": { "size": "1.25rem–1.875rem", "weight": 800 },
+    "body": { "size": "0.875rem–1.125rem", "weight": 400, "lineHeight": 1.6 },
+    "badge": { "size": "0.75rem", "weight": 700, "transform": "uppercase", "tracking": "0.05em" }
+  }
+}

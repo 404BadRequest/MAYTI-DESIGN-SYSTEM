@@ -1,0 +1,161 @@
+/**
+ * MAYTI Design Tokens — identidad corporativa
+ * Fuente: mayti-web / MAYTI-WEB
+ */
+:root {
+  /* Surfaces */
+  --mayti-navy: #0f172a;
+  --mayti-navy-deep: #020617;
+  --mayti-section: #e8eef5;
+  --mayti-card: #f8fafc;
+  --mayti-border: #d5dee8;
+  --mayti-white: #ffffff;
+
+  /* Text */
+  --mayti-text: #0f172a;
+  --mayti-text-body: #475569;
+  --mayti-text-muted: #64748b;
+  --mayti-text-on-dark: #ffffff;
+
+  /* Accents */
+  --mayti-cyan: #06b6d4;
+  --mayti-sky: #0ea5e9;
+  --mayti-teal: #0d9488;
+  --mayti-emerald: #059669;
+  --mayti-amber: #d97706;
+  --mayti-orange: #ea580c;
+
+  /* Brand gradient stops */
+  --mayti-g1: #327e96;
+  --mayti-g2: #0097b2;
+  --mayti-g3: #e85b3f;
+  --mayti-g4: #d9a006;
+  --mayti-gradient: linear-gradient(
+    90deg,
+    var(--mayti-g1) 0%,
+    var(--mayti-g2) 32%,
+    var(--mayti-g3) 72%,
+    var(--mayti-g4) 100%
+  );
+  --mayti-gradient-hover: linear-gradient(
+    90deg,
+    #3a8aa3 0%,
+    #00a9c6 32%,
+    #f06a4d 72%,
+    #e5ae12 100%
+  );
+
+  /* Product accents */
+  --mayti-vigia-ambiental: linear-gradient(135deg, #10b981, #0d9488);
+  --mayti-vigia-sectorial: linear-gradient(135deg, #14b8a6, #0891b2);
+  --mayti-conecta: linear-gradient(135deg, #06b6d4, #2563eb);
+  --mayti-circular: linear-gradient(135deg, #f59e0b, #ea580c);
+
+  /* Type */
+  --mayti-font-sans: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mayti-font-display: "Space Grotesk", var(--mayti-font-sans);
+
+  /* Radius / shadow */
+  --mayti-radius-pill: 9999px;
+  --mayti-radius-card: 1.5rem;
+  --mayti-radius-input: 0.75rem;
+  --mayti-shadow-cta: 0 4px 14px rgba(15, 23, 42, 0.22);
+  --mayti-shadow-card: 0 20px 40px -20px rgba(15, 23, 42, 0.12);
+}
+
+.mayti-gradient-brand {
+  background: var(--mayti-gradient);
+}
+.mayti-gradient-brand:hover {
+  background: var(--mayti-gradient-hover);
+}
+
+.mayti-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--mayti-radius-pill);
+  border: none;
+  font-family: var(--mayti-font-sans);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--mayti-gradient);
+  box-shadow: var(--mayti-shadow-cta);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.mayti-btn:hover {
+  background: var(--mayti-gradient-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.28);
+}
+
+.mayti-text-gradient-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.mayti-text-gradient-brand {
+  background: linear-gradient(135deg, #38bdf8 0%, #2dd4bf 35%, #fb923c 70%, #facc15 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mayti-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--mayti-radius-pill);
+  background: color-mix(in srgb, var(--mayti-cyan) 12%, white);
+  border: 1px solid color-mix(in srgb, var(--mayti-cyan) 35%, white);
+  color: #155e75;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mayti-card {
+  background: var(--mayti-card);
+  border: 1px solid var(--mayti-border);
+  border-radius: var(--mayti-radius-card);
+  padding: 2rem;
+  box-shadow: var(--mayti-shadow-card);
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.mayti-card:hover {
+  border-color: color-mix(in srgb, var(--mayti-cyan) 55%, var(--mayti-border));
+  transform: translateY(-3px);
+}
+
+.mayti-field {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--mayti-radius-input);
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  font-family: var(--mayti-font-sans);
+  font-size: 0.875rem;
+  color: var(--mayti-text);
+}
+.mayti-field:focus {
+  outline: none;
+  border-color: var(--mayti-cyan);
+  background: #fff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mayti-cyan) 18%, transparent);
+}
+
+.mayti-glass {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+}

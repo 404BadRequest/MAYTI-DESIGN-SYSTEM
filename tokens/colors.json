@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "brand": "MAYTI",
+    "source": "mayti-web.vercel.app / MAYTI-WEB src/index.css",
+    "version": "1.0.0"
+  },
+  "surfaces": {
+    "navy": { "hex": "#0f172a", "use": "Hero, nav, footer oscuro" },
+    "navyDeep": { "hex": "#020617", "use": "Fondos slate-950 / hero" },
+    "section": { "hex": "#E8EEF5", "use": "Secciones claras (soluciones)" },
+    "card": { "hex": "#F8FAFC", "use": "Cards y paneles" },
+    "cardSoft": { "hex": "#E8EEF5", "use": "Icon boxes / inputs soft" },
+    "border": { "hex": "#D5DEE8", "use": "Bordes de cards y paneles" },
+    "white": { "hex": "#FFFFFF", "use": "Fondos y texto sobre navy" }
+  },
+  "text": {
+    "title": { "hex": "#0f172a", "use": "Títulos en secciones claras (slate-900)" },
+    "body": { "hex": "#475569", "use": "Cuerpo (slate-600)" },
+    "muted": { "hex": "#64748b", "use": "Secundario" },
+    "onDark": { "hex": "#FFFFFF", "use": "Texto sobre hero/nav" },
+    "onDarkMuted": { "hex": "#cbd5e1", "use": "Cuerpo sobre oscuro" }
+  },
+  "brandGradient": {
+    "stops": [
+      { "hex": "#327e96", "at": "0%" },
+      { "hex": "#0097b2", "at": "32%" },
+      { "hex": "#e85b3f", "at": "72%" },
+      { "hex": "#d9a006", "at": "100%" }
+    ],
+    "css": "linear-gradient(90deg, #327e96 0%, #0097b2 32%, #e85b3f 72%, #d9a006 100%)",
+    "use": "CTA Explorar / Consultar / botones marca"
+  },
+  "accents": {
+    "cyan": { "hex": "#06b6d4", "use": "Enlaces, focus, badges" },
+    "sky": { "hex": "#0ea5e9", "use": "Acento UI / hover" },
+    "teal": { "hex": "#0d9488", "use": "VIGÍA Sectorial / acentos" },
+    "emerald": { "hex": "#059669", "use": "VIGÍA Ambiental" },
+    "amber": { "hex": "#d97706", "use": "Circular / highlights" },
+    "orange": { "hex": "#ea580c", "use": "Warm accent" }
+  },
+  "products": {
+    "vigiaAmbiental": { "from": "#10b981", "to": "#0d9488", "label": "emerald → teal" },
+    "vigiaSectorial": { "from": "#14b8a6", "to": "#0891b2", "label": "teal → cyan" },
+    "conecta": { "from": "#06b6d4", "to": "#2563eb", "label": "cyan → blue" },
+    "circular": { "from": "#f59e0b", "to": "#ea580c", "label": "amber → orange" }
+  }
+}

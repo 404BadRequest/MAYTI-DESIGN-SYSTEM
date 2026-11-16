@@ -1,0 +1,20 @@
+{
+  "radius": {
+    "pill": "9999px",
+    "card": "1.5rem",
+    "panel": "1.5rem",
+    "input": "0.75rem",
+    "iconBox": "0.75rem–1rem"
+  },
+  "layout": {
+    "maxWidth": "80rem",
+    "sectionY": "5rem–6rem",
+    "cardMinHeight": "420px",
+    "gapCards": "1.5rem–2rem"
+  },
+  "shadow": {
+    "cta": "0 4px 14px rgba(15, 23, 42, 0.22)",
+    "cardHover": "0 20px 40px -20px rgba(15, 23, 42, 0.15)",
+    "glass": "0 12px 30px -10px rgba(14, 165, 233, 0.2)"
+  }
+}

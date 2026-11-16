@@ -1,0 +1,57 @@
+{
+  "product": "SAGC Premium",
+  "path": "MAYTI-SAGC-V2.0/premium-environmental-management-dashboard",
+  "rule": "Usar estas librerías al construir apps Mayti/SAGC. No añadir Recharts/Chart.js ni TanStack Table/AG Grid salvo decisión explícita.",
+  "runtime": [
+    { "name": "next", "version": "16.2.6", "role": "App framework / RSC" },
+    { "name": "react", "version": "19.2.6", "role": "UI runtime" },
+    { "name": "react-dom", "version": "19.2.6", "role": "DOM renderer" }
+  ],
+  "ui": [
+    { "name": "tailwindcss", "version": "4.1.17", "role": "Utility CSS + @theme tokens" },
+    { "name": "lucide-react", "version": "^1.59.0", "role": "Iconos" },
+    { "name": "motion", "version": "^14.3.0", "role": "Animaciones / AnimatePresence / drawers" }
+  ],
+  "maps": [
+    {
+      "name": "maplibre-gl",
+      "version": "^6.15.0",
+      "role": "Mapas de cobertura geográfica",
+      "canonical": "src/components/coverage-panel.tsx",
+      "note": "Workers en public/maplibre vía scripts/copy-maplibre-worker.mjs"
+    }
+  ],
+  "charts": [
+    {
+      "name": "custom-svg + motion",
+      "version": "in-repo",
+      "role": "Gráficos de producto (sin lib de charts de terceros)",
+      "canonical": "src/components/charts.tsx",
+      "types": [
+        "gauge",
+        "area",
+        "donut",
+        "bars",
+        "sparkline",
+        "matrix",
+        "scatter",
+        "stacked",
+        "timeline",
+        "forecast"
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "name": "RecordList (custom)",
+      "version": "in-repo",
+      "role": "Listas/filas paginadas (patrón tabla)",
+      "canonical": "src/components/record-list.tsx",
+      "avoid": ["@tanstack/react-table", "ag-grid", "mui-datagrid"]
+    }
+  ],
+  "dataBackendOptional": [
+    { "name": "drizzle-orm", "version": "0.45.2", "role": "ORM (si hay Postgres local)" },
+    { "name": "pg", "version": "8.20.0", "role": "Driver Postgres" }
+  ]
+}
